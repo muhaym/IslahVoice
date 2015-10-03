@@ -12,26 +12,31 @@ using PropertyChanged;
 namespace IslahVoice.ViewModels
 {
     [ImplementPropertyChanged]
-    class HomePageViewModel 
+    class SpeechPageViewModel 
     {
-        public List<Post> LatestSpeeches { get; set; }
+        public List<Post> Speeches { get; set; }
 
-        public HomePageViewModel()
+        public SpeechPageViewModel()
         {
             GetRemoteSpeeches().ConfigureAwait(false);
         }
         public async Task GetSpeeches()
         {
        
-            await GetRemoteSpeeches();
+   //         await GetRemoteSpeeches();
      
         }
 
         private async Task GetRemoteSpeeches()
         {
+            Parameters param = new Parameters();
+            param.type = "LatestSpeech";
+            param.start = "0";
+            param.limit = "15";
+
             var remoteClient = new SpeechServices();
-            var posts = await remoteClient.GetSpeeches().ConfigureAwait(false);
-            this.LatestSpeeches = posts.ToList();
+            var posts = await remoteClient.GetSpeeches(param).ConfigureAwait(false);
+            this.Speeches = posts.ToList();
         }
     }
 }

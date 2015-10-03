@@ -12,7 +12,7 @@ namespace IslahVoice
         public App()
         {
             // The root page of your application
-            MainPage = new Views.HomePage();
+            MainPage = new Views.EntryPage();
         }
 
         protected override void OnStart()

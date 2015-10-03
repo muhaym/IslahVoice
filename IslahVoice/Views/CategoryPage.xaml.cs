@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace IslahVoice.Views
 {
-    public partial class HomePage : ContentPage
+    public partial class CategoryPage : ContentPage
     {
-        public HomePage()
+        public CategoryPage()
         {
             InitializeComponent();
         }

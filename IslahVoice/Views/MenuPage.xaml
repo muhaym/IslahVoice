@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IslahVoice.Views.MenuPage"
+             xmlns:vm="clr-namespace:IslahVoice.ViewModels;assembly=IslahVoice"
+             Title="Menu"
+             Icon="slideout.png"
+  >
+  <ScrollView>
+    <ScrollView.BindingContext>
+      <vm:MenuPageViewModel/>
+    </ScrollView.BindingContext>
+    <ListView x:Name="ManuPageListView"
+            ItemsSource="{Binding MainMenu}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Title}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </ScrollView>
+</ContentPage>
