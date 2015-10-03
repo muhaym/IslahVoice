@@ -1,4 +1,4 @@
-﻿using PropertyChanged;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ using IslahVoice.Models;
 using IslahVoice.Views;
 namespace IslahVoice.ViewModels
 {
-    [ImplementPropertyChanged]
-        class MenuPageViewModel
+        class MenuPageViewModel 
+    
     {
         public List<Menu> MainMenu { get; set; }
        public MenuPageViewModel()

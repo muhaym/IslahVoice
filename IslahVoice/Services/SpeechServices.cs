@@ -16,15 +16,15 @@ namespace IslahVoice.Services
         public async Task<IEnumerable<Post>> GetSpeeches(Parameters param)
         {
             string passvalue=null;
-            if (param.type == "LatestSpeech")
+            if (param.ptype == "LatestSpeech")
             {
                 passvalue = "latestspeeches.php?start=" + param.start + "&limit=" + param.limit;
             }
-            else if (param.type == "SearchSpeeches")
+            else if (param.ptype == "SearchSpeeches")
             {
                 passvalue = "search.php?searchstring=" + param.searchstring + "&start=" + param.start + "&limit=" + param.limit;
             }
-            else if(param.type == "SpeechbyCategory")
+            else if(param.ptype == "SpeechbyCategory")
             {
                 passvalue = "itemsbycategory.php?catid="+param.catid +"&start=" + param.start + "&limit=" + param.limit;
             }
