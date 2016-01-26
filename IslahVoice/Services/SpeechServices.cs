@@ -7,23 +7,33 @@ using IslahVoice.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Diagnostics;
 
 namespace IslahVoice.Services
 {
     class SpeechServices
     {
-        public async Task<IEnumerable<Post>> GetSpeeches(string parameters)
+        public async Task<IEnumerable<Post>> GetSpeeches(Parameters param)
         {
-            var propery;
-            if(parameters = "latestspeeches")
+            string passvalue=null;
+            if (param.ptype == "LatestSpeech")
             {
-
+                passvalue = "latestspeeches.php?start=" + param.start + "&limit=" + param.limit;
             }
+            else if (param.ptype == "SearchSpeeches")
+            {
+                passvalue = "search.php?searchstring=" + param.searchstring + "&start=" + param.start + "&limit=" + param.limit;
+            }
+            else if(param.ptype == "SpeechbyCategory")
+            {
+                passvalue = "itemsbycategory.php?catid="+param.catid +"&start=" + param.start + "&limit=" + param.limit;
+            }
+          
          //   IEnumerable<RootObject> posts = Enumerable.Empty<RootObject>();
             IEnumerable<Post> posts = Enumerable.Empty<Post>();
             using (var httpClient = CreateClient())
             {
-                var response = await httpClient.GetAsync("latestspeeches.php").ConfigureAwait(false);
+                var response = await httpClient.GetAsync(passvalue).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
